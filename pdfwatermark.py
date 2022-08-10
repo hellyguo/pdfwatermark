@@ -53,12 +53,12 @@ def annotate(filename, watermark, regex, font_name, font_size, color, opacity,
     src = PdfFileReader(filename)
     output = PdfFileWriter()
 
-    page = src.getPage(0)
-    page.mergePage(mask.getPage(0))
-    output.addPage(page)
+    mask_first_page = mask.getPage(0)
 
-    for page in range(1, src.getNumPages()):
-        output.addPage(src.getPage(page))
+    for page in range(0, src.getNumPages()):
+        src_page = src.getPage(page)
+        src_page.merge_page(mask_first_page)
+        output.addPage(src_page)
 
     if not destination_file_name:
         destination_file_name = filename
