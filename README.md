@@ -6,7 +6,7 @@ would help me get it done in Linux without major pain of some sort. So I decide
 to roll my own
 
 # What it does. 
-`pdfwatermark` allows you to add an arbitrary text line on the first page of
+`pdfwatermark` allows you to add an arbitrary text line on all pages of
 a given PDF file. You can also make the text of the watermark depend on the file
 name. 
 
@@ -26,14 +26,14 @@ By default, `pdfwatermark` watermarks the file in place. No way to
 
 `python pdfwatermark.py -w "WATERMARK" file.pdf`
 
-Puts a large black text 'WATERMARK' somewhere on the first page of `file.pdf`
+Puts a large black text 'WATERMARK' somewhere on all pages of `file.pdf`
 
 **Example 2, "simple"**
 
 `python pdfwatermark.py -w "WATERMARK" -c "#FF0000" -o 0.3 -x 200 -y 150  file.pdf` 
 
 Puts a large transparent pink 'WATERMARK' at the given coordinates 
-on the first page of `file.pdf`
+on all pages of `file.pdf`
 
 
 **Example 2, "pdfwatermark in full glory"**
@@ -41,12 +41,11 @@ on the first page of `file.pdf`
 `python pdfwatermark.py -c "#FF0000" -o 0.3 -x 200 -y 150  -w "({})" -r "^(\d+).+$" -d meaning.pdf 42-file.pdf`
 
 Puts a large transparent pink '(42)' at the given coordinates 
-on the first page of the content of `42-file.pdf` and saves the resulting content
+on all pages of the content of `42-file.pdf` and saves the resulting content
 as `meaning.pdf` 
  
 
 # Todo
-* add a possibility to add watermarks on pages other than first
 * make sure it works nicely with paper formats other than DIN A4
 * handle (at least some) errors
 
